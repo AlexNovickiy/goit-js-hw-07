@@ -75,7 +75,7 @@ function createElement(event) {
 
 function destroyElement(event) {
     if (count > 1) {
-        count --;
+        count--;
         counter.textContent = count;
     }
 

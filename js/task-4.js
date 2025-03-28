@@ -15,9 +15,9 @@ form.addEventListener('submit', function (event) {
             email: login.trim(),
             password: password.trim()
         };
+        console.log(result);
+        this.reset(); 
     }
-    console.log(result);
-    this.reset(); 
 })
 
 
@@ -41,7 +41,7 @@ form.addEventListener('submit', function (event) {
             email: this.elements.email.value.trim(),
             password: this.elements.password.value.trim()
         };
+        console.log(result);
+        this.reset();
     }
-    result !== undefined ? console.log(result) : console.log('All form fields must be filled in');
-    this.reset();
 }) */

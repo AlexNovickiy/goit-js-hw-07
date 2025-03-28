@@ -7,12 +7,11 @@ function getRandomHexColor() {
 const body = document.querySelector('body');
 const changeColor = document.querySelector('.change-color');
 const color = document.querySelector('.widget .color');
-const textColor = document.querySelector('.text-color-back .color');
 
 changeColor.addEventListener('click', changeBackColor);
 
 function changeBackColor(event) {
   const rundomColor = getRandomHexColor();
-  textColor.textContent = rundomColor;
+  color.textContent = rundomColor;
   body.style.backgroundColor = rundomColor;
 }

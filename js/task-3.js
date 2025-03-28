@@ -3,6 +3,6 @@ const output = document.querySelector('#name-output');
 
 input.addEventListener('input', (event) => {
     const trimmedValue = event.currentTarget.value.trim();
-    trimmedValue === '' ? output.textContent = 'Anonymous' : output.textContent = event.currentTarget.value;  
+    output.textContent = trimmedValue === '' ? 'Anonymous' : trimmedValue;  
 });
 
