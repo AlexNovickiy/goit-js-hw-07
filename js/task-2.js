@@ -30,18 +30,18 @@ const list = document.querySelector('.gallery');
 
     //1-ий варіант 
 
-const markup = images.map(({ url, alt }) =>
+/* const markup = images.map(({ url, alt }) =>
   `<li class="item-img-gallery">
     <img src="${url}" alt="${alt}">
   </li>`
 ).join('');
 
-list.insertAdjacentHTML("afterbegin", markup);
+list.insertAdjacentHTML("afterbegin", markup); */
 
 
     //2-ий варіант 
 
-/* const fragment = document.createDocumentFragment();
+const fragment = document.createDocumentFragment();
 
 images.forEach(({ url, alt }) => {
   const itemListImage = document.createElement('li');
@@ -58,7 +58,7 @@ images.forEach(({ url, alt }) => {
 });
 
 list.append(fragment);
- */
+
 
 
     //3-ій варіант 
