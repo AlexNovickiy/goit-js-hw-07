@@ -1,54 +1,90 @@
-class Storage {
-  #items;
-  constructor(arrGoods) {
-    this.#items = arrGoods;
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
+    alt: "Alpine Spring Meadows",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
+    alt: "Nature Landscape",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
+    alt: "Lighthouse Coast Sea",
   }
+];
 
-  getItems() {
-    return this.#items;
-  }
+const list = document.querySelector('.gallery');
 
-  addItem(newItem) {
-    this.#items.push(newItem);
-  }
 
-  //якщо потрібно видалити усі входження :
-   removeItem(itemToRemove) {
-    this.#items = this.#items.filter(item => item !== itemToRemove);
-  }
+    //1-ий варіант 
 
-  /* або так ,якщо потрібно видалити тільки перше входження : */
-  /* removeItem(itemToRemove) {
-    const index = this.#items.indexOf(itemToRemove);
-    if(index !== -1) this.#items.splice(index, 1);
-  } */
+const markup = images.map(({ url, alt }) =>
+  `<li class="item-img-gallery">
+    <img src="${url}" alt="${alt}">
+  </li>`
+).join('');
+
+list.insertAdjacentHTML("afterbegin", markup);
+
+
+    //2-ий варіант 
+
+/* const fragment = document.createDocumentFragment();
+
+images.forEach(({ url, alt }) => {
+  const itemListImage = document.createElement('li');
+  const imageElem = document.createElement('img');
+
+  itemListImage.classList.add('item-img-gallery');
+
+  imageElem.src = url; 
+  imageElem.alt = alt;
+  imageElem.classList.add('img-gallery');
+
+  itemListImage.append(imageElem);
+  fragment.append(itemListImage); 
+});
+
+list.append(fragment);
+ */
+
+
+    //3-ій варіант 
+
+/* const markup = images.map(({ url, alt }) => {
+  const li = document.createElement('li');
+  li.classList.add('item-img-gallery');
   
-   /* або можна так , переробити масив, а не просто відфільтрувати: */
- /*  removeItem(itemToRemove) {
-  this.#items = this.#items.reduce((acc, item) => {
-    if (item !== itemToRemove) acc.push(item);
-    return acc;
-  }, []);
-} */
-  
-   /* або ще так зробити можна, slice та просто деструктуризувати у новий масив: */
-/*   removeItem(itemToRemove) {
-  const index = this.#items.indexOf(itemToRemove);
-  if (index !== -1) {
-    this.#items = [...this.#items.slice(0, index), ...this.#items.slice(index + 1)];
-  }
-} */
+  const img = document.createElement('img');
+  img.src = url;
+  img.alt = alt;
 
-}
+  li.appendChild(img);
+  return li;
+});
 
-const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+list.append(...markup); */
 
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
-storage.removeItem("Scaner");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+
+
+
+
+
+
+
+

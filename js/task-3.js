@@ -1,40 +1,8 @@
-class StringBuilder {
-     #value;
-     constructor(initialValue) {
-          this.#value = initialValue;
-     }
+const input = document.querySelector('#name-input');
+const output = document.querySelector('#name-output');
 
-     getValue() {
-          return this.#value;
-     }
+input.addEventListener('input', (event) => {
+    const trimmedValue = event.currentTarget.value.trim();
+    trimmedValue === '' ? output.textContent = 'Anonymous' : output.textContent = event.currentTarget.value;  
+});
 
-     padEnd(str) {
-          this.#value = this.#value.padEnd(this.#value.length + str.length, str);
-          /* можно просто так ще, якщо увесь додавати тільки : */
-         /*  this.#value += str; */
-     }
-
-     padStart(str) {
-          this.#value = this.#value.padStart(this.#value.length + str.length, str);
-          /* або так: */
-           /* this.#value = str + this.#value; */
-     }
-
-     padBoth(str) {
-          const lengthToAdd = str.length;  
-          this.#value = this.#value
-          .padStart(this.#value.length + lengthToAdd, str)
-          .padEnd(this.#value.length  + lengthToAdd * 2, str);
-          /* або так: */
-           /* this.#value = str + this.#value + str; */
-     }
-}
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
